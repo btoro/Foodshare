@@ -2,7 +2,12 @@
 require("db.php");
 
 // define variables and set to empty values
-$celiac = $autism = $vegetarian = $diabetes = $candiada = cardio = "0";
+$celiac = "0";
+$autism = "0";
+$vegetarian= "0";
+$diabetes = "0";
+$candiada = "0";
+cardio = "0";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $celiac = test_input($_POST["celiac"]);
