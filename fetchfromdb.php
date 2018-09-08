@@ -10,12 +10,12 @@ $candiada = "0";
 $cardio = "0";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $celiac = $_POST["celiac"];
-//  $autism = $_POST["autism"];
-//  $vegetarian = $_POST["vegetarian"];
-//  $diabetes = $_POST["diabetes"];
-//  $candiada = $_POST["candiada"];
-//  $cardio = $_POST["cardio"];
+	$celiac = $_POST["celiac"];
+	$autism = $_POST["autism"];
+	$vegetarian = $_POST["vegetarian"];
+	$diabetes = $_POST["diabetes"];
+	$candiada = $_POST["candiada"];
+	$cardio = $_POST["cardio"];
 //  $maxprice = $_POST["maxprice"];
 
 file_put_contents("/home/btoro93/log.txt", 'VARIABLE: ', FILE_APPEND);
