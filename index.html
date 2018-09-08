@@ -139,7 +139,6 @@
 		
 		var params = "celiac="+celiac+"&autism="+ autism  + "&vegetarian="+ vegetarian  + "&diabetes="+ diabetes + "&candiada="+ candiada + "&cardio=" + cardio ;
 
-		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
 		request.onreadystatechange = function() {
 		if (request.readyState == 4) {
@@ -149,6 +148,9 @@
 		};
 
 		request.open('POST', url, true);
+		
+		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
 		request.send(params);
 	}
 </script>
