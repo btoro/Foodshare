@@ -80,7 +80,7 @@
 				Array.prototype.forEach.call(markers, function(markerElem) {
 				  var id = markerElem.getAttribute('id');
 				  var name = markerElem.getAttribute('name');
-				  var address = markerElem.getAttribute('address');
+				  var address2 = markerElem.getAttribute('address');
 				  var point = new google.maps.LatLng(
 					  parseFloat(markerElem.getAttribute('lat')),
 					  parseFloat(markerElem.getAttribute('lng')));
@@ -92,7 +92,7 @@
 				  infowincontent.appendChild(document.createElement('br'));
 
 				  var text = document.createElement('text');
-				  text.textContent = address
+				  text.textContent = address2
 				  infowincontent.appendChild(text);
 				  var icon = {};
 				  var marker = new google.maps.Marker({
