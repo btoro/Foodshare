@@ -1,5 +1,238 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+	* {
+			box-sizing: border-box;
+	}
+	
+
+	.img-container {
+			float: center;
+			width: 33.33%;
+			padding: 10px;
+	}
+	
+	.clearfix::after {
+			content: "";
+			clear: both;
+			display: table;
+	}
+
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+         #map {
+            height: 100%;
+            
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .center {
+text-align: center;
+    border: 3px solid green;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 50%;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.slidecontainer {
+    width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 50%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #2196F3; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #2196F3; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+    </style>
+    
+<div>
+	<h4><b>PORTFOLIO</b></h4>
+
+<div class="w3-bar-block">
+	<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+	<a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
+	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+</div>
+
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px" >
+<div style="text-align:center">
+	<img class="w3-image" src="mealbackground.jpg" alt="Me" width="1500" height="600"  >
+  <div class="w3-display-container w3-padding-large w3-border w3-wide w3-center">
+    <h5 class="w3-hide-medium w3-hide-small w3-xxxlarge">Welcome</h5>
+    <h3 class="w3-hide-medium w3-hide-small">Join your local FoodShare</h3>
+	</div>
+</div>
+
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Using MySQL and PHP with Google Maps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 80%;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+  </head>
+</div>
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding" class="clearfix" style="text-align:center">
+        <div class="w3-third w3-container w3-margin-bottom" class="img-container">
+          <img src="iconhealth.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom" class="clearfix" class="img-container">
+          <img src="iconmoney.jpg" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container" class="clearfix" class="img-container">
+          <img src="iconpeople.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        </div>
+        
+    </body>
+    
+    <body>
+    
+    <div>
+        <h3 class="w3-hide-medium w3-hide-small" style="text-align:center">Enter your Zipcode</h3>
+      <form style="text-align:center">
+          <input id="address" type="textbox" value="zipcode">
+          <button id="submit" type="button" value="Go!">Go!</button>
+      </form>
+    </div>
+    <br>
+
+
+
+
+    
+
 <head>
     <title>Geocoding Service</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
@@ -8,7 +241,12 @@
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            height: 100%;
+            height: 75%;
+            width: 75%;
+            margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+            
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -33,133 +271,107 @@
 </head>
 <body>
 
-<div id="floating-panel">
-    <form>
-		Zipcode:
-        <input id="address" type="textbox" value="21218">
-        <button id="submit" type="button" value="Go!">Go!</button>
-    </form>
-</div>
-<br>
-<br>
-<br>
 
 <!--<div id="floating-panel">-->
     <!--<input id="address" type="textbox" value="Sydney, NSW">-->
     <!--<input id="submit" type="button" value="Geocode">-->
 <!--</div>-->
 
-<div id="map"></div>
+<div id="map" ></div>
 <script>
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
-            center: {lat: 39.298456, lng:  -76.576585}
+            zoom: 8,
+            center: {lat: -34.397, lng: 150.644}
         });
         var geocoder = new google.maps.Geocoder();
-
         document.getElementById('submit').addEventListener('click', function() {
             geocodeAddress(geocoder, map);
         });
     }
-
     function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
         geocoder.geocode({'address': address}, function(results, status) {
             if (status === 'OK') {
                 resultsMap.setCenter(results[0].geometry.location);
-//                var marker = new google.maps.Marker({
-//                    map: resultsMap,
-//                    position: results[0].geometry.location
- //               });
-				var infoWindow = new google.maps.InfoWindow;
-
-			downloadUrl('http://35.188.96.59/fetchfromdb.php', function(data) 
-		//	downloadUrl('eventsTomap2.xml', function(data) 
-			  {
-				var xml = data.responseXML;
-				var markers = xml.documentElement.getElementsByTagName('marker');
-				Array.prototype.forEach.call(markers, function(markerElem) {
-				  var id = markerElem.getAttribute('id');
-				  var name = markerElem.getAttribute('name');
-				  var address2 = markerElem.getAttribute('address');
-				  var point = new google.maps.LatLng(
-					  parseFloat(markerElem.getAttribute('lat')),
-					  parseFloat(markerElem.getAttribute('lng')));
-
-				  var infowincontent = document.createElement('div');
-				  var strong = document.createElement('strong');
-				  strong.textContent = name
-				  infowincontent.appendChild(strong);
-				  infowincontent.appendChild(document.createElement('br'));
-
-				  var text = document.createElement('text');
-				  text.textContent = address2
-				  infowincontent.appendChild(text);
-				  var icon = {};
-				  var marker = new google.maps.Marker({
-					map: resultsMap,
-					position: point,
-					label: icon.label
-				  });
-				  marker.addListener('click', function() {
-					infoWindow.setContent(infowincontent);
-					infoWindow.open(resultsMap, marker);
-
-			  
-
-					  });
-					});
-				});
-				
-				
-				
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
             }
         });
     }
-     
-	function doNothing() {}
-
-	function downloadUrl(url, callback) {
-		//var request = window.ActiveXObject ?
-		//new ActiveXObject('Microsoft.XMLHTTP') :
-		//new XMLHttpRequest;
-		var request = new XMLHttpRequest();
-		
-		var celiac = 0;
-		var autism = 0;
-		var vegetarian = 0;
-		var diabetes = 0;
-		var candiada = 0;
-		var cardio = 0;
-
-		var maxPrice = 10000;
-		
-		//var params = 'celiac=0';
-		
-		var params = "celiac="+celiac+"&autism="+ autism  + "&vegetarian="+ vegetarian  + "&diabetes="+ diabetes + "&candiada="+ candiada + "&cardio=" + cardio ;
-		
-		request.open('POST', url, true);
-		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		//request.setRequestHeader("Content-type", "application/json; charset=utf-8");
-		
-
-		request.onreadystatechange = function() {
-		if (request.readyState == 4 && request.status == 200) {
-			request.onreadystatechange = doNothing;
-			callback(request, request.status );
-			}
-		};
-
-		
-
-		request.send(params);
-	}
 </script>
-<script async defe
+<script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
 </script>
 </body>
+<br>
+<br>
+
+<div class="slidecontainer" style="text-align:center">
+        <h5>Price Range ($)</h5>  
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Cost (1-100): <span id="demo"></span></p>
+          </div>
+          <script>
+                var slider = document.getElementById("myRange");
+                var output = document.getElementById("demo");
+                output.innerHTML = slider.value;
+                
+                slider.oninput = function() {
+                  output.innerHTML = this.value;
+                }
+        </script>
+          <br>
+
+<h3  style="text-align:center">Search by specialized recipies</h3>
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding" class="clearfix" style="text-align:center">
+        <div class="w3-third w3-container w3-margin-bottom">
+          <div class="w3-container w3-white">
+                <label class="container">Celiac
+                        <input type="checkbox" checked="checked">
+                        <span class="checkmark"></span>
+                      </label>
+                      
+                      <label class="container">Autism
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom" class="clearfix" >
+          <div class="w3-container w3-white">
+                <label class="container">Diabetes
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                      
+                      <label class="container">Candida
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+        <div class="w3-third w3-container" class="clearfix" >
+          <div class="w3-container w3-white">
+                <label class="container">Cardio
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+                    
+                          <label class="container">Vegetarian
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                      </label>
+          </div>
+        </div>
+        </div>
+<br>
+<br>
+<br>
+
 </html>
