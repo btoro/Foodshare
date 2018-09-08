@@ -10,13 +10,13 @@ $candiada = "0";
 $cardio = "0";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $celiac = test_input($_POST["celiac"]);
-  $autism = test_input($_POST["autism"]);
-  $vegetarian = test_input($_POST["vegetarian"]);
-  $diabetes = test_input($_POST["diabetes"]);
-  $candiada = test_input($_POST["candiada"]);
-  $cardio = test_input($_POST["cardio"]);
-  $maxprice = test_input($_POST["maxprice"]);
+  $celiac = $_POST["celiac"];
+  $autism = $_POST["autism"];
+  $vegetarian = $_POST["vegetarian"];
+  $diabetes = $_POST["diabetes"];
+  $candiada = $_POST["candiada"];
+  $cardio = $_POST["cardio"];
+  $maxprice = $_POST["maxprice"];
 
 }
 
