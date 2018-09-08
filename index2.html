@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+	* {
+			box-sizing: border-box;
+	}
+	
+
+	.img-container {
+			float: center;
+			width: 33.33%;
+			padding: 10px;
+	}
+	
+	.clearfix::after {
+			content: "";
+			clear: both;
+			display: table;
+	}
+
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+         #map {
+            height: 100%;
+            
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .center {
+text-align: center;
+    border: 3px solid green;
+}
+
+    </style>
+    
+<div>
+	<h4><b>PORTFOLIO</b></h4>
+
+<div class="w3-bar-block">
+	<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+	<a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
+	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+</div>
+
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px" >
+<div style="text-align:center">
+	<img class="w3-image" src="mealbackground.jpg" alt="Me" width="1500" height="600"  >
+  <div class="w3-display-container w3-padding-large w3-border w3-wide w3-center">
+    <h5 class="w3-hide-medium w3-hide-small w3-xxxlarge">Welcome</h5>
+    <h3 class="w3-hide-medium w3-hide-small">Join your local FoodShare</h3>
+	</div>
+</div>
+
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Using MySQL and PHP with Google Maps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 80%;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+  </head>
+</div>
+
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding" class="clearfix" style="text-align:center">
+        <div class="w3-third w3-container w3-margin-bottom" class="img-container">
+          <img src="iconhealth.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container w3-margin-bottom" class="clearfix" class="img-container">
+          <img src="iconmoney.jpg" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        <div class="w3-third w3-container" class="clearfix" class="img-container">
+          <img src="iconpeople.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+          <div class="w3-container w3-white">
+            <p><b>Lorem Ipsum</b></p>
+            <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+          </div>
+        </div>
+        </div>
+        
+    </body>
+    
+    <body>
+    
+    <div>
+        <h3 class="w3-hide-medium w3-hide-small" style="text-align:center">Enter your Zipcode</h3>
+      <form style="text-align:center">
+          <input id="address" type="textbox" value="zipcode">
+          <button id="submit" type="button" value="Go!">Go!</button>
+      </form>
+    </div>
+    <br>
+    <br>
+    <br>
+
+<head>
+    <title>Geocoding Service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 0%;
+            z-index: 5;
+            background-color: #fff;
+            /*padding: 5px;*/
+            /*border: 1px solid #999;*/
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<!--<div id="floating-panel">-->
+    <!--<input id="address" type="textbox" value="Sydney, NSW">-->
+    <!--<input id="submit" type="button" value="Geocode">-->
+<!--</div>-->
+
+<div id="map"></div>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+        document.getElementById('submit').addEventListener('click', function() {
+            geocodeAddress(geocoder, map);
+        });
+    }
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
+</script>
+</body>
+</html>

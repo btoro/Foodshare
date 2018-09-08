@@ -1,4 +1,65 @@
 <!DOCTYPE html >
+<html>
+<style>
+	* {
+			box-sizing: border-box;
+	}
+	
+	.img-container {
+			float: center;
+			width: 33.33%;
+			padding: 10px;
+	}
+	
+	.clearfix::after {
+			content: "";
+			clear: both;
+			display: table;
+	}
+
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+         #map {
+            height: 100%;
+            
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+
+	</style>
+
+
+
+
+	<h4><b>PORTFOLIO</b></h4>
+
+<div class="w3-bar-block">
+	<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+	<a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
+	<a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+</div>
+
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-center" style="max-width:1500px" >
+<div style="text-align:center">
+	<img class="w3-image" src="mealbackground.jpg" alt="Me" width="1500" height="600"  >
+  <div class="w3-display-container w3-padding-large w3-border w3-wide w3-center">
+    <h5 class="w3-hide-medium w3-hide-small w3-xxxlarge">Welcome</h5>
+    <h3 class="w3-hide-medium w3-hide-small">Join your local FoodShare</h3>
+	</div>
+</div>
+
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -18,118 +79,84 @@
     </style>
   </head>
 
-  <body>
-	<div id="address">
-<form>
-  Zipcode:   <input type="text" id="zipcode">   <button id="gobtn" type="button">Go!</button><br>
-</form>
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding" class="clearfix">
+    <div class="w3-third w3-container w3-margin-bottom" class="img-container">
+      <img src="iconhealth.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Lorem Ipsum</b></p>
+        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      </div>
+    </div>
+    <div class="w3-third w3-container w3-margin-bottom" class="clearfix" class="img-container">
+      <img src="iconmoney.jpg" alt="Norway" style="width:30%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Lorem Ipsum</b></p>
+        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      </div>
+    </div>
+    <div class="w3-third w3-container" class="clearfix" class="img-container">
+      <img src="iconpeople.png" alt="Norway" style="width:30%" class="w3-hover-opacity">
+      <div class="w3-container w3-white">
+        <p><b>Lorem Ipsum</b></p>
+        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
+      </div>
+    </div>
 	</div>
+	
+</body>
 
-    <div id="map"></div>
+<body>
 
-    <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
+<div id="floating-panel">
+    <h3 class="w3-hide-medium w3-hide-small">Enter your Zipcode</h3>
+  <form>
+      <input id="address" type="textbox" value="zipcode">
+      <button id="submit" type="button" value="Go!">Go!</button>
+  </form>
+</div>
+<br>
+<br>
+<br>
 
-        function initMap() {
-			var btnDiv = document.getElementById('gobtn');
-			var map = new google.maps.Map(document.getElementById('map'), {
-			  center: new google.maps.LatLng(39.298456, -76.576585),
-			  zoom: 12
-			});
-			var infoWindow = new google.maps.InfoWindow;
-
-			  // Change this depending on the name of your PHP or XML file
-			  downloadUrl('http://35.188.96.59/eventsTomap2.php', function(data) 
-			  {
-				var xml = data.responseXML;
-				var markers = xml.documentElement.getElementsByTagName('marker');
-				Array.prototype.forEach.call(markers, function(markerElem) {
-				  var id = markerElem.getAttribute('id');
-				  var name = markerElem.getAttribute('name');
-				  var address = markerElem.getAttribute('address');
-				  var point = new google.maps.LatLng(
-					  parseFloat(markerElem.getAttribute('lat')),
-					  parseFloat(markerElem.getAttribute('lng')));
-
-				  var infowincontent = document.createElement('div');
-				  var strong = document.createElement('strong');
-				  strong.textContent = name
-				  infowincontent.appendChild(strong);
-				  infowincontent.appendChild(document.createElement('br'));
-
-				  var text = document.createElement('text');
-				  text.textContent = address
-				  infowincontent.appendChild(text);
-				  var icon = {};
-				  var marker = new google.maps.Marker({
-					map: map,
-					position: point,
-					label: icon.label
-				  });
-				  marker.addListener('click', function() {
-					infoWindow.setContent(infowincontent);
-					infoWindow.open(map, marker);
-
-			  
-
-					  });
-					});
-				});
-			google.maps.event.addDomListener(btnDiv, 'click', function() 
-			{
-			var zipCode = document.getElementById('zipcode');
-			codeAddress(zipcode);
-			
-			//document.write( zipCode );
-			window.alert('Map was clicked!');
-			});
-        }
+<!--<div id="floating-panel">-->
+  <!--<input id="address" type="textbox" value="Sydney, NSW">-->
+  <!--<input id="submit" type="button" value="Geocode">-->
+<!--</div>-->
 
 
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
+<div id="map"></div>
+<script>
+  function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+      });
+      var geocoder = new google.maps.Geocoder();
+      document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+      });
+  }
+  function geocodeAddress(geocoder, resultsMap) {
+      var address = document.getElementById('address').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+              resultsMap.setCenter(results[0].geometry.location);
+              var marker = new google.maps.Marker({
+                  map: resultsMap,
+                  position: results[0].geometry.location
+              });
+          } else {
+              alert('Geocode was not successful for the following reason: ' + status);
           }
-        };
+      });
+  }
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
+</script>
+</body>
 
-        request.open('GET', url, true);
-        request.send(null);
-      }
 
-      function doNothing() {}
-
-	  function codeAddress(zipCode) {
-		geocoder.geocode( { 'address': zipCode}, function(results, status) {
-		  if (status == google.maps.GeocoderStatus.OK) {
-			//Got result, center the map and put it out there
-			map.setCenter(results[0].geometry.location);
-			var marker = new google.maps.Marker({
-				map: map,
-				position: results[0].geometry.location
-			});
-		  } else {
-			alert("Geocode was not successful for the following reason: " + status);
-		  }
-		});
-	  }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
-    </script>
-  </body>
 </html>
 
