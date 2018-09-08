@@ -137,15 +137,14 @@
 
 		var maxPrice = 10000;
 		
-		var params = "celiac=0";
+		var params = 'celiac=0';
 		
 		//var params = "celiac="+celiac+"&autism="+ autism  + "&vegetarian="+ vegetarian  + "&diabetes="+ diabetes + "&candiada="+ candiada + "&cardio=" + cardio ;
 		
 		request.open('POST', url, true);
-		//request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		request.setRequestHeader("Content-type", "application/json; charset=utf-8");
-		//request.setRequestHeader("Content-length", params.length);
-		//request.setRequestHeader("Connection", "close");
+		request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		//request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+		
 
 		request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {

@@ -11,12 +11,15 @@ $cardio = "0";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $celiac = $_POST["celiac"];
-  $autism = $_POST["autism"];
-  $vegetarian = $_POST["vegetarian"];
-  $diabetes = $_POST["diabetes"];
-  $candiada = $_POST["candiada"];
-  $cardio = $_POST["cardio"];
-  $maxprice = $_POST["maxprice"];
+//  $autism = $_POST["autism"];
+//  $vegetarian = $_POST["vegetarian"];
+//  $diabetes = $_POST["diabetes"];
+//  $candiada = $_POST["candiada"];
+//  $cardio = $_POST["cardio"];
+//  $maxprice = $_POST["maxprice"];
+
+file_put_contents("/home/btoro93/log.txt", 'VARIABLE: ', FILE_APPEND);
+file_put_contents("/home/btoro93/log.txt", $celiac.PHP_EOL, FILE_APPEND);
 
 }
 
@@ -45,6 +48,9 @@ if (!$db_selected) {
 //$query = "SELECT * FROM events WHERE 1";
 
 $query = "SELECT * FROM events WHERE celiac = $celiac AND autism = $autism AND vegetarian = $vegetarian AND diabetes = $diabetes AND candiada = $candiada AND cardio = $cardio";
+
+file_put_contents("/home/btoro93/log.txt", '/n', FILE_APPEND);
+file_put_contents("/home/btoro93/log.txt", $query, FILE_APPEND);
 
 
 $result = mysqli_query($connection, $query);
