@@ -1,57 +1,79 @@
-<!DOCTYPE html >
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Using MySQL and PHP with Google Maps</title>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geocoding Service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 80%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  </head>
-
-  <body>
-	<div id="address">
-<form>
-  Zipcode:   <input type="text" id="zipcode">   <button id="gobtn" type="button">Go!</button><br>
-</form>
-	</div>
-
-    <div id="map"></div>
-
-    <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 100%;
         }
-      };
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 0%;
+            z-index: 5;
+            background-color: #fff;
+            /*padding: 5px;*/
+            /*border: 1px solid #999;*/
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+<body>
 
-      var zipCode;
-      var geocoder;
-      var map;
+<div id="floating-panel">
+    <form>
+		Zipcode:
+        <input id="address" type="textbox" value="12222">
+        <button id="submit" type="button" value="Go!">Go!</button>
+    </form>
+</div>
+<br>
+<br>
+<br>
 
-        function initMap() {
-            geocoder = new google.maps.Geocoder();
-			var btnDiv = document.getElementById('gobtn');
-			var map = new google.maps.Map(document.getElementById('map'), {
-			  center: new google.maps.LatLng(39.298456, -76.576585),
-			  zoom: 12
-			});
-			var infoWindow = new google.maps.InfoWindow;
+<!--<div id="floating-panel">-->
+    <!--<input id="address" type="textbox" value="Sydney, NSW">-->
+    <!--<input id="submit" type="button" value="Geocode">-->
+<!--</div>-->
 
-			  // Change this depending on the name of your PHP or XML file
-			  downloadUrl('http://35.188.96.59/eventsTomap2.php', function(data) 
+<div id="map"></div>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: {lat: 39.298456, lng:  -76.576585}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+            geocodeAddress(geocoder, map);
+        });
+    }
+
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+            if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: resultsMap,
+                    position: results[0].geometry.location
+                });
+				
+			downloadUrl('http://35.188.96.59/eventsTomap2.php', function(data) 
 			  {
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName('marker');
@@ -87,110 +109,33 @@
 					  });
 					});
 				});
-			google.maps.event.addDomListener(btnDiv, 'click', function() 
-			{
-			    zipCode = document.getElementById('zipcode');
+				
+				
+				
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
 
-			// window.alert( zipCode.value );
-			// window.alert('Map was clicked!');
-			});
-        }
+	function downloadUrl(url, callback) {
+		var request = window.ActiveXObject ?
+		new ActiveXObject('Microsoft.XMLHTTP') :
+		new XMLHttpRequest;
 
+		request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			request.onreadystatechange = doNothing;
+			callback(request, request.status);
+			}
+		};
 
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-
-      // function codeAddress() {
-      //     var geocoder;
-      //     var map;
-      //
-      //     function initialize() {
-      //         geocoder = new google.maps.Geocoder();
-      //         var latlng = new google.maps.LatLng(-34.397, 150.644);
-      //         var mapOptions = {
-      //             zoom: 8,
-      //             center: latlng
-      //         }
-      //         map = new google.maps.Map(document.getElementById('map'), mapOptions);
-      //     }
-      // }
-
-
-          function geocodeAddress(geocoder, resultsMap) {
-              var address = document.getElementById('address').value;
-              geocoder.geocode({'address': address}, function(results, status) {
-                  if (status === 'OK') {
-                      resultsMap.setCenter(results[0].geometry.location);
-                      var marker = new google.maps.Marker({
-                          map: resultsMap,
-                          position: results[0].geometry.location
-                      });
-                  } else {
-                      alert('Geocode was not successful for the following reason: ' + status);
-                  }
-              });
-          }
-
-
-
-      // function codeAddress() {
-      //       var lat = '';
-      //       var lng = '';
-      //       var zip = zipCode.value;
-      //       var address = zip;
-      //       window.alert(address);
-      //     // var address = document.getElementById('zipCode').value;
-      //     geocoder.geocode( { 'address': address}, function(results, status) {
-      //         if (status == google.maps.GeocoderStatus.OK) {
-      //                 lat = results[0].geometry.location.lat();
-      //                 lng = results[0].geometry.location.lng();
-      //
-      //             // var marker = new google.maps.Marker({
-      //             //     map: map,
-      //             //     position: results[0].geometry.location
-      //             // });
-      //         } else {
-      //             alert('Geocode was not successful for the following reason: ' + status);
-      //         }
-      //     });
-      //     alert('Latitude: ' + lat + ' Logitude: ' + lng);
-      // }
-
-	  // function codeAddress(zipCode) {
-		// geocoder.geocode( { 'address': zipCode}, function(results, status) {
-		//   if (status == google.maps.GeocoderStatus.OK) {
-		// 	//Got result, center the map and put it out there
-		// 	map.setCenter(results[0].geometry.location);
-		// 	window.alert(results[0].geometry.location);
-		// 	var marker = new google.maps.Marker({
-		// 		map: map,
-		// 		position: results[0].geometry.location
-		// 	});
-		//   } else {
-		// 	alert("Geocode was not successful for the following reason: " + status);
-		//   }
-		// });
-	  // }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
-    </script>
-  </body>
+		request.open('GET', url, true);
+		request.send(null);
+	}
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
+</script>
+</body>
 </html>
-

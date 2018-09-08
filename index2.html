@@ -35,7 +35,8 @@
 
 <div id="floating-panel">
     <form>
-        <input id="address" type="textbox" value="zipcode">
+		Zipcode:
+        <input id="address" type="textbox" value="12222">
         <button id="submit" type="button" value="Go!">Go!</button>
     </form>
 </div>
@@ -52,8 +53,8 @@
 <script>
     function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 8,
-            center: {lat: -34.397, lng: 150.644}
+            zoom: 12,
+            center: {lat: 39.298456, lng:  -76.576585}
         });
         var geocoder = new google.maps.Geocoder();
 
@@ -71,11 +72,67 @@
                     map: resultsMap,
                     position: results[0].geometry.location
                 });
+				
+			downloadUrl('http://35.188.96.59/eventsTomap2.php', function(data) 
+			  {
+				var xml = data.responseXML;
+				var markers = xml.documentElement.getElementsByTagName('marker');
+				Array.prototype.forEach.call(markers, function(markerElem) {
+				  var id = markerElem.getAttribute('id');
+				  var name = markerElem.getAttribute('name');
+				  var address = markerElem.getAttribute('address');
+				  var point = new google.maps.LatLng(
+					  parseFloat(markerElem.getAttribute('lat')),
+					  parseFloat(markerElem.getAttribute('lng')));
+
+				  var infowincontent = document.createElement('div');
+				  var strong = document.createElement('strong');
+				  strong.textContent = name
+				  infowincontent.appendChild(strong);
+				  infowincontent.appendChild(document.createElement('br'));
+
+				  var text = document.createElement('text');
+				  text.textContent = address
+				  infowincontent.appendChild(text);
+				  var icon = {};
+				  var marker = new google.maps.Marker({
+					map: map,
+					position: point,
+					label: icon.label
+				  });
+				  marker.addListener('click', function() {
+					infoWindow.setContent(infowincontent);
+					infoWindow.open(map, marker);
+
+			  
+
+					  });
+					});
+				});
+				
+				
+				
             } else {
                 alert('Geocode was not successful for the following reason: ' + status);
             }
         });
     }
+
+	function downloadUrl(url, callback) {
+		var request = window.ActiveXObject ?
+		new ActiveXObject('Microsoft.XMLHTTP') :
+		new XMLHttpRequest;
+
+		request.onreadystatechange = function() {
+		if (request.readyState == 4) {
+			request.onreadystatechange = doNothing;
+			callback(request, request.status);
+			}
+		};
+
+		request.open('GET', url, true);
+		request.send(null);
+	}
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
