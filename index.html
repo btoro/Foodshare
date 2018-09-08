@@ -37,7 +37,12 @@
         }
       };
 
+      var zipCode;
+      var geocoder;
+      var map;
+
         function initMap() {
+            geocoder = new google.maps.Geocoder();
 			var btnDiv = document.getElementById('gobtn');
 			var map = new google.maps.Map(document.getElementById('map'), {
 			  center: new google.maps.LatLng(39.298456, -76.576585),
@@ -84,11 +89,10 @@
 				});
 			google.maps.event.addDomListener(btnDiv, 'click', function() 
 			{
-			var zipCode = document.getElementById('zipcode');
-			//codeAddress(zipcode);
-			
-			//document.write( zipCode );
-			window.alert('Map was clicked!');
+			    zipCode = document.getElementById('zipcode');
+
+			// window.alert( zipCode.value );
+			// window.alert('Map was clicked!');
 			});
         }
 
@@ -112,20 +116,77 @@
 
       function doNothing() {}
 
-	  function codeAddress(zipCode) {
-		geocoder.geocode( { 'address': zipCode}, function(results, status) {
-		  if (status == google.maps.GeocoderStatus.OK) {
-			//Got result, center the map and put it out there
-			map.setCenter(results[0].geometry.location);
-			var marker = new google.maps.Marker({
-				map: map,
-				position: results[0].geometry.location
-			});
-		  } else {
-			alert("Geocode was not successful for the following reason: " + status);
-		  }
-		});
-	  }
+      // function codeAddress() {
+      //     var geocoder;
+      //     var map;
+      //
+      //     function initialize() {
+      //         geocoder = new google.maps.Geocoder();
+      //         var latlng = new google.maps.LatLng(-34.397, 150.644);
+      //         var mapOptions = {
+      //             zoom: 8,
+      //             center: latlng
+      //         }
+      //         map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      //     }
+      // }
+
+
+          function geocodeAddress(geocoder, resultsMap) {
+              var address = document.getElementById('address').value;
+              geocoder.geocode({'address': address}, function(results, status) {
+                  if (status === 'OK') {
+                      resultsMap.setCenter(results[0].geometry.location);
+                      var marker = new google.maps.Marker({
+                          map: resultsMap,
+                          position: results[0].geometry.location
+                      });
+                  } else {
+                      alert('Geocode was not successful for the following reason: ' + status);
+                  }
+              });
+          }
+
+
+
+      // function codeAddress() {
+      //       var lat = '';
+      //       var lng = '';
+      //       var zip = zipCode.value;
+      //       var address = zip;
+      //       window.alert(address);
+      //     // var address = document.getElementById('zipCode').value;
+      //     geocoder.geocode( { 'address': address}, function(results, status) {
+      //         if (status == google.maps.GeocoderStatus.OK) {
+      //                 lat = results[0].geometry.location.lat();
+      //                 lng = results[0].geometry.location.lng();
+      //
+      //             // var marker = new google.maps.Marker({
+      //             //     map: map,
+      //             //     position: results[0].geometry.location
+      //             // });
+      //         } else {
+      //             alert('Geocode was not successful for the following reason: ' + status);
+      //         }
+      //     });
+      //     alert('Latitude: ' + lat + ' Logitude: ' + lng);
+      // }
+
+	  // function codeAddress(zipCode) {
+		// geocoder.geocode( { 'address': zipCode}, function(results, status) {
+		//   if (status == google.maps.GeocoderStatus.OK) {
+		// 	//Got result, center the map and put it out there
+		// 	map.setCenter(results[0].geometry.location);
+		// 	window.alert(results[0].geometry.location);
+		// 	var marker = new google.maps.Marker({
+		// 		map: map,
+		// 		position: results[0].geometry.location
+		// 	});
+		//   } else {
+		// 	alert("Geocode was not successful for the following reason: " + status);
+		//   }
+		// });
+	  // }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
