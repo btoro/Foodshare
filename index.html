@@ -123,10 +123,10 @@
 	function doNothing() {}
 
 	function downloadUrl(url, callback) {
-		var request = window.ActiveXObject ?
-		new ActiveXObject('Microsoft.XMLHTTP') :
-		new XMLHttpRequest;
-		//var request = new XMLHttpRequest();
+		//var request = window.ActiveXObject ?
+		//new ActiveXObject('Microsoft.XMLHTTP') :
+		//new XMLHttpRequest;
+		var request = new XMLHttpRequest();
 		
 		var celiac = 0;
 		var autism = 0;
@@ -137,8 +137,10 @@
 
 		var maxPrice = 10000;
 		
-		var params = "celiac="+celiac+"&autism="+ autism  + "&vegetarian="+ vegetarian  + "&diabetes="+ diabetes + "&candiada="+ candiada + "&cardio=" + cardio ;
-
+		var params = "celiac=0";
+		
+		//var params = "celiac="+celiac+"&autism="+ autism  + "&vegetarian="+ vegetarian  + "&diabetes="+ diabetes + "&candiada="+ candiada + "&cardio=" + cardio ;
+		
 		request.open('POST', url, true);
 		//request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 		request.setRequestHeader("Content-type", "application/json; charset=utf-8");
@@ -157,7 +159,7 @@
 		request.send(params);
 	}
 </script>
-<script async defer
+<script async defe
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9J-Wn2JdIVahScRcJH1PucZokOJnVrQE&callback=initMap">
 </script>
 </body>
