@@ -74,6 +74,7 @@
  //               });
 				
 			downloadUrl('http://35.188.96.59/eventsTomap2.php', function(data) 
+		//	downloadUrl('eventsTomap2.xml', function(data) 
 			  {
 				var xml = data.responseXML;
 				var markers = xml.documentElement.getElementsByTagName('marker');
@@ -96,13 +97,13 @@
 				  infowincontent.appendChild(text);
 				  var icon = {};
 				  var marker = new google.maps.Marker({
-					map: map,
+					map: resultsMap,
 					position: point,
 					label: icon.label
 				  });
 				  marker.addListener('click', function() {
 					infoWindow.setContent(infowincontent);
-					infoWindow.open(map, marker);
+					infoWindow.open(resultsMap, marker);
 
 			  
 
