@@ -123,10 +123,10 @@
 	function doNothing() {}
 
 	function downloadUrl(url, callback) {
-	//	var request = window.ActiveXObject ?
-	//	new ActiveXObject('Microsoft.XMLHTTP') :
-	//	new XMLHttpRequest;
-		var request = new XMLHttpRequest();
+		var request = window.ActiveXObject ?
+		new ActiveXObject('Microsoft.XMLHTTP') :
+		new XMLHttpRequest;
+		//var request = new XMLHttpRequest();
 		
 		var celiac = 0;
 		var autism = 0;
